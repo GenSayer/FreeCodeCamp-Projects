@@ -1,0 +1,152 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roman Numeral Converter</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="converter-window">
+    <h1>Roman Numeral Converter</h1>
+    <label for="number">Enter a number (1–3999):</label>
+    <input id="number" type="number" placeholder="e.g. 42" />
+    <button id="convert-btn">Convert</button>
+    <p id="output"></p>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+
+
+** end of index.html **
+
+** start of script.js **
+
+/* Code partially inspired by and borrowed from Landon Schlangen's YouTube Tutorial for understanding and with enhancements */
+
+const input = document.getElementById("number");
+const convertBtn = document.getElementById("convert-btn");
+const output = document.getElementById("output");
+
+// Convert Number to Roman
+function convertNumToRoman(num) {
+  const val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const syms = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+
+  return val.reduce((roman, currVal, i) => {
+    const count = Math.floor(num / currVal);
+    num -= count * currVal;
+    return roman + syms[i].repeat(count);
+  }, '');
+}
+
+// Event Listener for Convert Button
+convertBtn.addEventListener("click", handleConvert);
+
+function handleConvert() {
+  const value = parseInt(input.value, 10);
+
+  if (isNaN(value)) {
+    output.innerText = "Please enter a valid number";
+    return;
+  }
+
+  if (value < 1) {
+    output.innerText = "Please enter a number greater than or equal to 1";
+    return;
+  }
+
+  if (value > 3999) {
+    output.innerText = "Please enter a number less than or equal to 3999";
+    return;
+  }
+
+  output.innerText = convertNumToRoman(value);
+}
+
+
+** end of script.js **
+
+** start of styles.css **
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f1e8;
+  font-family: 'Georgia', serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.converter-window {
+  background-color: #fff;
+  border: 3px double #bfa76f;
+  padding: 30px 40px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 6px 6px 0 rgba(191, 167, 111, 0.4);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #7b5e2e;
+  border-bottom: 2px solid #bfa76f;
+  padding-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #bfa76f;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+  background-color: #bfa76f;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #a8905a;
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  min-height: 1.5em;
+}
+
+
+** end of styles.css **
+

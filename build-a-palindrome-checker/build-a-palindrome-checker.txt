@@ -1,0 +1,236 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <main class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">Palindrome Checker</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="container">
+    <h1 class="title">Palindrome Checker</h1>
+    <div class="palindrome-div">
+      <label for="text-input">Check for a palindrome:</label>
+      <input type="text" id="text-input" class="palindrome-input">
+      <button id="check-btn" class="palindrome-btn">Submit</button>
+      <div id="result" class="results-div hidden"></div>
+    </div>
+    <div class="palindrome-definition-div">
+      <p class="palindrome-definition"></p>
+    </div>
+  </div>
+</main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+** end of index.html **
+
+** start of script.js **
+
+const inputField = document.getElementById('text-input');
+const checkBtn = document.getElementById('check-btn');
+const outputBox = document.getElementById('result');
+
+function normalizeString(str) {
+    return str.replace(/[^0-9a-z]/gi, '').toLowerCase();
+}
+
+function isPalindrome(str) {
+    const cleaned = normalizeString(str);
+    const reversed = cleaned.split('').reverse().join('');
+    return cleaned === reversed;
+}
+
+function displayResult(text) {
+    outputBox.innerHTML = ''; 
+
+    const message = document.createElement('p');
+    message.classList.add('user-input');
+
+    const verdict = isPalindrome(text)
+        ? 'is a palindrome'
+        : 'is not a palindrome';
+
+    message.innerHTML = `<strong>${text}</strong> ${verdict}`;
+    outputBox.appendChild(message);
+    outputBox.classList.remove('hidden');
+}
+
+function handleCheck() {
+    const inputValue = inputField.value.trim();
+
+    if (!inputValue) {
+        alert('Please input a value'); 
+        return;
+    }
+
+    displayResult(inputValue);
+    inputField.value = '';
+}
+
+checkBtn.addEventListener('click', handleCheck);
+inputField.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        handleCheck();
+    }
+});
+
+
+
+** end of script.js **
+
+** start of styles.css **
+
+/* Inspired in part by 98.css by jdan (MIT License) https://github.com/jdan/98.css */
+
+body {
+  font-family: 'MS Sans Serif', Tahoma, Geneva, sans-serif;
+  background-color: #008080; /* Classic greenish desktop */
+  color: black;
+  margin: 0;
+  padding: 20px;
+}
+
+.window {
+  max-width: 520px;
+  margin: 40px auto;
+  background-color: #dfdfdf;
+  border: 2px solid #000;
+  box-shadow: 2px 2px #404040;
+}
+
+.title-bar {
+  background: linear-gradient(to right, #000080, #0000aa);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: default;
+}
+
+.title-bar-text {
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+}
+
+.title-bar-controls button {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  background: #dfdfdf;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #fff;
+  padding: 0;
+  cursor: pointer;
+}
+
+.container {
+  padding: 16px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #808080;
+  border-right: 2px solid #808080;
+  background-color: #dfdfdf;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 1px 1px #fff;
+}
+
+.palindrome-div {
+  padding: 10px;
+  background-color: #c0c0c0;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #fff;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.palindrome-input {
+  width: calc(100% - 12px);
+  padding: 5px;
+  font-size: 14px;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  background-color: white;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #fff;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+
+.palindrome-btn {
+  padding: 4px 12px;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  background-color: #dfdfdf;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #fff;
+  cursor: pointer;
+}
+
+.palindrome-btn:active {
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff;
+}
+
+.results-div {
+  margin-top: 12px;
+  padding: 8px;
+  background-color: white;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #fff;
+}
+
+.user-input {
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.palindrome-definition-div {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+** end of styles.css **
+

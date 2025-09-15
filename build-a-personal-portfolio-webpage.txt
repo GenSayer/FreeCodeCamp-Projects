@@ -1,0 +1,488 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>[Personal Portfolio Template]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  </head>
+  <body>
+    <ul id="navbar">
+      <li>
+        <a href="#welcome-section">Welcome</a>
+      </li>
+      <li>
+        <a href="#about">About</a>
+      </li>
+      <li>
+        <a href="#skills">Skills</a>
+      </li>
+      <li>
+        <a href="#projects">Projects</a>
+      </li>
+      <li>
+        <a href="#contact">Contact</a>
+      </li>
+    </ul>
+    <div id="welcome-section">
+      <h1>John Doe</h1>
+    </div>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I'm a developer passionate about crafting clean, functional, and accessible websites. I enjoy turning ideas into digital experiences.</p>
+    </section>
+
+    <section id="skills">
+      <h2>My Skills</h2>
+
+      <div class="skill">
+        <label>HTML</label>
+        <div class="bar"><div class="fill" style="width: 90%"></div></div>
+      </div>
+
+      <div class="skill">
+        <label>CSS</label>
+        <div class="bar"><div class="fill" style="width: 85%"></div></div>
+      </div>
+
+      <div class="skill">
+        <label>Java</label>
+        <div class="bar"><div class="fill" style="width: 82%"></div></div>
+      </div>
+
+      <div class="skill">
+        <label>Responsive Design</label>
+        <div class="bar"><div class="fill" style="width: 80%"></div></div>
+      </div>
+
+      <div class="skill">
+        <label>Git & GitHub</label>
+        <div class="bar"><div class="fill" style="width: 75%"></div></div>
+      </div>
+    </section>
+
+
+    <div id="projects">
+    <h2>My Projects</h2>
+
+    <div class="project-tile">
+      <h3>Project One</h3>
+      <p>A short description of the first project.</p>
+      <a href="http://example.com/project1" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-tile">
+      <h3>Project Two</h3>
+      <p>A short description of the second project.</p>
+      <a href="http://example.com/project2" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-tile">
+      <h3>Project Three</h3>
+      <p>A short description of the third project.</p>
+      <a href="http://example.com/project3" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-tile">
+      <h3>Project Four</h3>
+      <p>A short description of the fourth project.</p>
+      <a href="http://example.com/project4" target="_blank">View Project</a>
+    </div>
+
+    <a id="profile-link" href="https://github.com/GenSayer" target="_blank">Visit my GitHub</a>
+    </div>
+    <div id="contact">
+      <h2>Contact Me</h2>
+      <p>If you'd like to work together, request my resume, or have any questions, feel free to reach out!</p>
+  
+      <form method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <a href="#welcome-section" class="back-to-top" title="Back to Top">↑</a>
+
+  </body>
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f5f5f5;
+  line-height: 1.6;
+  padding-top: 80px;
+}
+
+/* Navbar */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1e1e1e;
+  z-index: 1000;
+  list-style: none;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#navbar a {
+  text-decoration: none;
+  color: #ff4c4c;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#navbar a:hover {
+  color: #ff1a1a;
+}
+
+/* Welcome Section */
+#welcome-section {
+  height: 100vh;
+  background: linear-gradient(to right, #330000, #660000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2em;
+}
+
+#welcome-section h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* About Section */
+#about {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  padding: 4em 2em;
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+}
+
+#about p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+/* Skills Section */
+#skills {
+  padding: 4em 2em;
+  background-color: #121212;
+  color: #f5f5f5;
+  text-align: center;
+}
+
+#skills h2 {
+  font-size: 2rem;
+  margin-bottom: 2em;
+}
+
+.skill {
+  max-width: 500px;
+  margin: 0 auto 1.5em;
+  text-align: left;
+}
+
+.skill label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: #ffcccc;
+}
+
+.bar {
+  background-color: #2a2a2a;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background-color: #ff4c4c;
+  border-radius: 10px 0 0 10px;
+}
+
+
+
+/* Projects Section */
+#projects {
+  padding: 4em 2em;
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+#projects h2 {
+  font-size: 2rem;
+  margin-bottom: 2em;
+  color: #f5f5f5;
+}
+
+.project-tile {
+  background-color: #2a2a2a;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.project-tile h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5em;
+  color: #ffcccc;
+}
+
+.project-tile p {
+  margin-bottom: 1em;
+  color: #ddd;
+}
+
+.project-tile a {
+  display: inline-block;
+  text-decoration: none;
+  color: #ff4c4c;
+  border: 2px solid #ff4c4c;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.project-tile a:hover {
+  background-color: #ff4c4c;
+  color: #fff;
+}
+
+/* Project Section Layout */
+#projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#projects > .project-tile {
+  max-width: 600px;
+  width: 90%;
+  margin-bottom: 2em;
+}
+
+/* Profile Link */
+#profile-link {
+  display: inline-block;
+  margin-top: 3em;
+  font-size: 1.1em;
+  text-decoration: none;
+  color: #ff9999;
+  background-color: #2a2a2a;
+  border: 2px solid #ff4c4c;
+  padding: 0.75em 1.5em;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#profile-link:hover {
+  background-color: #ff4c4c;
+  color: white;
+  border-color: #ff4c4c;
+}
+
+/* Responsive Projects Layout */
+@media (min-width: 768px) {
+  #projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 4em;
+    text-align: left;
+  }
+
+  #projects > .project-tile {
+    margin-bottom: 0;
+  }
+
+  #projects h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  #profile-link {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+/* Contact Section */
+#contact {
+  padding: 4em 2em;
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+  color: #f5f5f5;
+}
+
+#contact p {
+  margin-bottom: 2em;
+  color: #ccc;
+  font-size: 1.1em;
+}
+
+#contact form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: #ff4c4c;
+  box-shadow: 0 0 0 3px rgba(255, 76, 76, 0.3);
+}
+
+#contact button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+  background-color: #cc3333;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #ff4c4c;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5em 0.8em;
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top:hover {
+  background-color: #cc3333;
+  transform: scale(1.1);
+}
+
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid #ff4c4c;
+  outline-offset: 3px;
+}
+
+#welcome-section,
+#about,
+#skills,
+#projects,
+#contact {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+#welcome-section {
+  animation-delay: 0.2s;
+}
+
+#about {
+  animation-delay: 0.4s;
+}
+
+#skills {
+  animation-delay: 0.6s;
+}
+
+#projects {
+  animation-delay: 0.8s;
+}
+
+#contact {
+  animation-delay: 1s;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+** end of styles.css **
+

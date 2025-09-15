@@ -1,0 +1,35 @@
+<!-- Structure and parts of code borrowed from PreCodeCamp video. https://www.youtube.com/watch?v=8faVdujJ9bo -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1 id="title">Survey</h1>
+    <p id="description">Please fill out this form to request more information from us.</p>
+    <form id="survey-form">
+      <label for="name" id="name-label">Name</label>
+      <input id="name" required type="text" placeholder="Enter your name">
+      <label for="email" id="email-label">Email</label>
+      <input id="email" required type="email" id="email-label" placeholder="Enter your email">
+      <label for="number" id="number-label">Age</label>
+      <input id="number" type="number" min="18" max="99" placeholder="Age">
+      <label for="dropdown">Are you available for a follow-up call?</label>
+
+      <select id="dropdown">
+        <option value="yes"> Yes</option>
+        <option value="no"> No</option>
+      </select>
+      <br>
+      <p>Experience</p>
+      <label><input type="radio" value="none" name="experience-level"> None</label>
+      <label><input type="radio" value="some" name="experience-level"> Some</label>
+      <label><input type="radio" value="expert" name="experience-level"> Expert</label>
+      <label><input type="checkbox" value="video" name="experience-level"> Video</label>
+      <label><input type="checkbox" value="video" name="experience-level"> Group</label>
+      <label><input type="checkbox" value="video" name="experience-level"> Mentor</label>
+      <textarea placeholder="Please share any additional comments or questions..."></textarea>
+      <input type="submit" id="submit">
+    </form>
+  </body>
+</html>

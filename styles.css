@@ -1,0 +1,100 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+#survey-form {
+  background-color: #fff;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#title {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 40px;
+  color: #2c3e50;
+}
+
+#description {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+form p {
+  margin-top: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+label input[type="radio"],
+label input[type="checkbox"] {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+#submit {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-top: 20px;
+}
+
+#submit:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 600px) {
+  #survey-form {
+    padding: 20px;
+  }
+
+  #title {
+    font-size: 1.5em;
+  }
+}
+

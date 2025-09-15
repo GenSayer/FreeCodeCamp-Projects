@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background-color: #161b22;
+  padding: 30px 20px;
+  overflow-y: auto;
+  border-right: 1px solid #30363d;
+}
+
+#navbar header {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #58a6ff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#navbar a {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  color: #c9d1d9;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#navbar a:hover {
+  background-color: #21262d;
+  border-left: 3px solid #58a6ff;
+  color: #58a6ff;
+}
+
+#main-doc {
+  margin-left: 260px;
+  padding: 40px 60px;
+}
+
+.main-section header {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: #58a6ff;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 10px;
+}
+
+.main-section p {
+  margin-bottom: 15px;
+}
+
+code {
+  display: block;
+  background-color: #161b22;
+  color: #58a6ff;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 4px solid #58a6ff;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #30363d;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #58a6ff;
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    width: 100vw;
+    height: auto;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: fixed; 
+    z-index: 1000;
+  }
+
+  #navbar header {
+    margin-right: 20px;
+  }
+
+  #navbar a {
+    margin: 0 10px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 0;
+  }
+
+  #navbar a:hover {
+    background-color: transparent;
+    border-bottom: 3px solid #58a6ff;
+  }
+
+  #main-doc {
+    margin-left: 0;
+    padding: 140px 20px 20px 20px; 
+  }
+}
+
+
+@media (max-height: 600px) {
+  .main-section {
+    font-size: 0.85rem;
+  }
+}

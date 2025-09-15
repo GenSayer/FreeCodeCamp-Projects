@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Technical Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main id="main-doc">
+      <nav id="navbar">
+        <header>Bash Scripting</header>
+        <a class="nav-link" href="#Introduction">Introduction</a>
+        <a class="nav-link" href="#Variables_&_User_Input">Variables & User Input</a>
+        <a class="nav-link" href="#Control_Flow">Control Flow</a>
+        <a class="nav-link" href="#Loops">Loops</a>
+        <a class="nav-link" href="#Functions_&_Arguments">Functions & Arguments</a>
+      </nav>
+
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <p>Bash scripting is a way to automate command execution on Unix-like systems.</p>
+        <p>At its core, it allows sequential execution of shell commands stored in a file.</p>
+        <p>Scripts typically start with a shebang to define the interpreter.</p>
+        <p>Comments are denoted by <code>#</code> and are invaluable for documentation.</p>
+        <p>Proper indentation improves readability and maintainability.</p>
+        <code>#!/bin/bash
+# Hello world script
+echo "Hello, World!"</code>
+      </section>
+
+      <section class="main-section" id="Variables_&_User_Input">
+        <header>Variables & User Input</header>
+        <p>Variables store values such as strings or numbers—no spaces around the equals sign.</p>
+        <p>To reference variables, precede the name with <code>$</code>.</p>
+        <p>You can prompt the user and capture input via <code>read</code>.</p>
+        <p>Variables are untyped; quotes preserve whitespace or special characters.</p>
+        <p>Use descriptive variable names to improve script clarity.</p>
+        <code>name="Alex"
+echo "Hello, $name!"</code>
+        <code>echo "Enter a color:"
+read color
+echo "Your favorite color is $color."</code>
+        <ul>
+          <li>String assignment</li>
+          <li>Referencing variables</li>
+          <li>Reading user input</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Control_Flow">
+        <header>Control Flow</header>
+        <p>Control flow lets scripts make decisions based on conditions.</p>
+        <p>Bash uses <code>if…then…elif…else…fi</code> syntax for conditionals.</p>
+        <p>Common comparison operators include <code>-gt, -lt, -eq</code>.</p>
+        <p>Always quote variables to handle empty or special values.</p>
+        <p>Error handling improves robustness—use <code>||</code> or exit codes.</p>
+        <code>echo "Enter a number:"
+read num
+if [ "$num" -gt 10 ]; then
+  echo "Greater than 10"
+elif [ "$num" -eq 10 ]; then
+  echo "Exactly 10"
+else
+  echo "Less than 10"
+fi</code>
+      </section>
+
+      <section class="main-section" id="Loops">
+        <header>Loops</header>
+        <p>Loops automate repetitive tasks efficiently.</p>
+        <p><code>for</code> loops iterate over sequences or lists.</p>
+        <p><code>while</code> loops repeat as long as a condition holds.</p>
+        <p>Control loop flow using <code>break</code> and <code>continue</code>.</p>
+        <p>Be careful to avoid infinite loops—update conditions within the loop.</p>
+        <code>for i in {1..5}; do
+  echo "Count: $i"
+done</code>
+        <code>count=1
+while [ $count -le 5 ]; do
+  echo "Loop $count"
+  ((count++))
+done</code>
+        <ul>
+          <li>for loops</li>
+          <li>while loops</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="Functions_&_Arguments">
+        <header>Functions & Arguments</header>
+        <p>Functions let you encapsulate reusable blocks of code.</p>
+        <p>Define functions using <code>function name() { … }</code> or just <code>name() { … }</code>.</p>
+        <p>Position matters—define functions before calling them.</p>
+        <p>Command-line arguments are accessed as <code>$1, $2, …</code>.</p>
+        <p><code>$#</code> holds the total argument count; <code>$@</code> lists them all.</p>
+        <code>greet() {
+  echo "Hello, $1!"
+}
+greet "Alice"</code>
+        <code>echo "Script name: $0"
+echo "Args count: $#"</code>
+        <ul>
+          <li>Functions</li>
+          <li>Positional parameters</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

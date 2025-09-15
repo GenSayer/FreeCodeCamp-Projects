@@ -1,0 +1,209 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RetroComputing Inc.</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="header">
+      <img
+        id="header-img"
+        src="https://png.pngtree.com/png-vector/20250416/ourlarge/pngtree-retro-90s-pixel-art-design-nostalgic-computer-graphics-icon-png-image_16004482.png"
+        alt="RetroComputing Logo"
+      />
+      <nav id="nav-bar">
+        <ul>
+          <li><a class="nav-link" href="#section-1">About</a></li>
+          <li><a class="nav-link" href="#section-2">Features</a></li>
+          <li><a class="nav-link" href="#section-3">Pricing</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="section-1" class="flex section">
+        <div>
+          <h2>Welcome to RetroComputing</h2>
+          <p>We're bringing back the classics — vintage style, modern power. Our retro-themed machines are packed with nostalgia and performance.</p>
+        </div>
+      </section>
+
+      <section id="section-2" class="flex section">
+        <div>
+          <h2>Key Features</h2>
+          <ul>
+            <li>✨ Authentic retro design (CRT shell included!)</li>
+            <li>⚡ Modern internals — SSDs, multicore CPUs</li>
+            <li>🎮 Pre-loaded with retro games and DOS interface</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="section-3" class="flex section">
+        <div>
+          <h2>Pricing</h2>
+          <p>Starting at just <strong>$299</strong>. Choose your level of nostalgia:</p>
+          <ul>
+            <li><strong>Basic:</strong> Shell + Emulation</li>
+            <li><strong>Pro:</strong> Full PC + Pre-installed software</li>
+            <li><strong>Collector:</strong> Limited-edition units</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="flex section">
+        <div>
+          <h2>See it in action</h2>
+          <iframe
+            id="video"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/-yzL8snytwI"
+            title="What is RetroComputing?"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="flex section">
+        <div>
+          <h2>Stay in the Loop</h2>
+          <form id="form" action="https://www.freecodecamp.com/email-submit">
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+            <input id="submit" type="submit" value="Join the Movement" />
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+
+** end of index.html **
+
+** start of styles.css **
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #1e1e1e;
+  color: #00ff00;
+  margin: 0;
+  padding-top: 100px;
+}
+
+header {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 2px solid #00ff00;
+}
+
+#header-img {
+  width: 60px;
+  height: auto;
+}
+
+#nav-bar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.section {
+  padding: 2rem;
+  border-bottom: 1px dashed #00ff00;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+iframe {
+  max-width: 100%;
+  border: 2px solid #00ff00;
+  margin-top: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+input[type="email"],
+input[type="submit"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input[type="submit"] {
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: #00cc00;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #002b36;
+    color: #00ffcc;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #nav-bar ul {
+    flex-direction: column;
+  }
+
+  .section {
+    text-align: center;
+  }
+}
+
+
+** end of styles.css **
+

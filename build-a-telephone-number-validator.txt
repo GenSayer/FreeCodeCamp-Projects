@@ -1,0 +1,237 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telephone Number Validator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="xp-window">
+    <div class="title-bar">
+      <span class="title-text">Telephone Number Validator</span>
+      <div class="title-controls">
+        <button class="title-btn minimize" aria-label="Minimize">_</button>
+        <button class="title-btn close" aria-label="Close">×</button>
+      </div>
+    </div>
+
+    <div class="xp-content">
+      <label for="user-input">Enter a US phone number:</label>
+      <input
+        type="text"
+        id="user-input"
+        placeholder="e.g. (123) 456-7890"
+        autocomplete="off"
+      />
+
+      <div class="button-group">
+        <button id="check-btn">Check</button>
+        <button id="clear-btn">Clear</button>
+      </div>
+
+      <div id="results-div"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+** end of index.html **
+
+** start of script.js **
+
+const inputField = document.getElementById("user-input");
+const validateBtn = document.getElementById("check-btn");
+const clearBtn = document.getElementById("clear-btn");
+const output = document.getElementById("results-div");
+
+// US phone number pattern
+const phonePattern = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/;
+
+// Validate the phone number
+function validatePhoneNumber(phoneStr) {
+  return phonePattern.test(phoneStr);
+}
+
+// Renders the message
+function renderMessage(message, isValid) {
+  const listItem = document.createElement("li");
+  listItem.textContent = message;
+  listItem.className = isValid ? "valid" : "invalid";
+  output.appendChild(listItem);
+}
+
+// Handle the validation
+function handleValidation() {
+  const phone = inputField.value.trim();
+
+  if (phone === "") {
+    alert("Please provide a phone number");
+    return;
+  }
+
+  const isValid = validatePhoneNumber(phone);
+  const msg = `${isValid ? "Valid" : "Invalid"} US number: ${phone}`;
+  renderMessage(msg, isValid);
+  inputField.value = "";
+}
+
+// Clears the results
+function clearResults() {
+  output.innerHTML = "";
+}
+
+// Handles the key presses
+function handleKeyPress(e) {
+  if (e.key === "Enter") {
+    handleValidation();
+  }
+}
+
+// Hook up the event listeners
+validateBtn.addEventListener("click", handleValidation);
+clearBtn.addEventListener("click", clearResults);
+inputField.addEventListener("keydown", handleKeyPress);
+
+
+** end of script.js **
+
+** start of styles.css **
+
+/* Windows XP-Like Theme - Inspired by Luna UI
+   Colors, shadows, and layout patterns referenced from XP.css (MIT License)
+   https://github.com/botoxparty/XP.css
+*/
+
+
+body {
+  margin: 0;
+  padding: 40px;
+  background: #6aa7e6;
+  font-family: Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.xp-window {
+  width: 400px;
+  background: #f0f0f0;
+  border: 1px solid #1f4f91;
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.title-bar {
+  background: linear-gradient(to right, #245edb, #3a80f7);
+  padding: 6px 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  border-bottom: 1px solid #1f4f91;
+}
+
+.title-text {
+  user-select: none;
+}
+
+.title-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.title-btn {
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  background-color: #e5e5e5;
+  border: 1px solid #999;
+  border-radius: 2px;
+  padding: 0;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.title-btn:hover {
+  background-color: #c7dffc;
+}
+
+.xp-content {
+  padding: 20px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #7f9db9;
+  border-radius: 4px;
+  background-color: white;
+  outline-color: #3a80f7;
+  margin-bottom: 14px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+button {
+  flex: 1;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: Tahoma, sans-serif;
+  background: linear-gradient(to bottom, #dbefff, #bcd6f7);
+  border: 1px solid #4a7fcd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #c5e2ff, #a8ccf4);
+  border-color: #245edb;
+}
+
+/* Results */
+#results-div {
+  padding: 10px;
+  min-height: 30px;
+  background-color: #ffffff;
+  border: 1px solid #7f9db9;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.valid {
+  color: green;
+  font-weight: bold;
+}
+
+.invalid {
+  color: red;
+  font-weight: bold;
+}
+
+** end of styles.css **
+

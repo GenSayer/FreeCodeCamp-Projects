@@ -1,0 +1,131 @@
+// Note: this code seems to inconsistently pass test 13 and 19 and possibly other tests for some weird reason, not sure why (may need a bug report).
+
+let price = 19.5;  
+let cid = [
+  ['PENNY', 0.5],
+  ['NICKEL', 0],
+  ['DIME', 0],
+  ['QUARTER', 0],
+  ['ONE', 0],
+  ['FIVE', 0],
+  ['TEN', 0],
+  ['TWENTY', 0],
+  ['ONE HUNDRED', 0]
+];
+
+// Display the price on the page
+document.getElementById("price").innerHTML = `<b>Price:</b> $${price.toFixed(2)}`;
+
+const getTotalCashInDrawer = () => {
+  return cid.reduce((total, cash) => total + cash[1], 0).toFixed(2);
+};
+
+// Run the cash register logic.
+const checkRegister = () => {
+  let cashInput = parseFloat(document.getElementById("cash").value); 
+  let changeDue = (cashInput - price).toFixed(2); 
+  let totalCashInDrawer = getTotalCashInDrawer(); 
+
+  document.getElementById("change").innerHTML = `<b>Change:</b> $${changeDue}`;
+
+  // Checks if the customer has enough money
+  if (cashInput < price) {
+    alert("Customer does not have enough money to purchase the item");
+    return;
+  }
+
+  // If the cash is exact, no change is due
+  if (parseFloat(changeDue) === 0) {
+    document.getElementById("change-due").innerText = "No change due - customer paid with exact cash";
+    return;
+  }
+
+  // Check if there's enough change in the drawer
+  if (parseFloat(changeDue) > parseFloat(totalCashInDrawer)) {
+    document.getElementById("change-due").innerText = "Status: INSUFFICIENT_FUNDS";
+    return;
+  }
+
+  // Denominations for the change
+  const denominations = [
+    { name: 'ONE HUNDRED', value: 100 },
+    { name: 'TWENTY', value: 20 },
+    { name: 'TEN', value: 10 },
+    { name: 'FIVE', value: 5 },
+    { name: 'ONE', value: 1 },
+    { name: 'QUARTER', value: 0.25 },
+    { name: 'DIME', value: 0.1 },
+    { name: 'NICKEL', value: 0.05 },
+    { name: 'PENNY', value: 0.01 }
+  ];
+
+  let changeArr = [];
+  let changeLeft = parseFloat(changeDue);
+  let cidCopy = cid.map(denom => [denom[0], denom[1]]);
+
+  // Calculate change for each denomination, from highest to lowest
+  for (let i = 0; i < denominations.length; i++) {
+    let denom = denominations[i];
+    let index = cidCopy.findIndex(cash => cash[0] === denom.name);
+    let availableAmount = cidCopy[index][1];
+    let totalDenominationGiven = 0;
+
+    // While the change due is greater than or equal to the denomination value and the register has enough of that denomination. Also if any denomination is used, push it to changeArr.
+    while (changeLeft >= denom.value && availableAmount > 0) {
+      availableAmount -= denom.value;
+      changeLeft = (changeLeft - denom.value).toFixed(2);
+      totalDenominationGiven += denom.value;
+      cidCopy[index][1] = Math.max(0, availableAmount); 
+    }
+
+    
+    if (totalDenominationGiven > 0) {
+      changeArr.push([denom.name, totalDenominationGiven]);
+    }
+  }
+
+  // If there's any remaining change left, we cannot give exact change
+  if (parseFloat(changeLeft) > 0) {
+    document.getElementById("change-due").innerText = "Status: INSUFFICIENT_FUNDS";
+    return;
+  }
+
+  // Check if the drawer is empty or the change due equals the total cash in drawer
+  let remainingCash = cidCopy.reduce((total, cash) => total + cash[1], 0).toFixed(2);
+  if (parseFloat(remainingCash) === 0 || parseFloat(totalCashInDrawer) === parseFloat(changeDue)) {
+    let changeOutput = cidCopy
+      .filter(denom => denom[1] > 0)
+      .map(denom => `${denom[0]}: $${denom[1].toFixed(2)}`).join(" ");
+    
+    
+    if (changeOutput === "" && changeArr.length > 0) {
+      changeOutput = changeArr.map(cash => `${cash[0]}: $${cash[1].toFixed(2)}`).join(" ");
+    }
+    document.getElementById("change-due").innerText = `Status: CLOSED ${changeOutput}`;
+    cid = cidCopy; 
+  } else {
+    
+    document.getElementById("change-due").innerText = `Status: OPEN ${changeArr.map(cash => `${cash[0]}: $${cash[1].toFixed(2)}`).join(" ")}`;
+    cid = cidCopy;
+  }
+
+  displayCashInDrawer(); 
+};
+
+// Display the cash in drawer
+const displayCashInDrawer = () => {
+  const displayCid = document.getElementById("cash-in-drawer");
+  displayCid.innerHTML = "<h4>Cash in Drawer:</h4>" + cid.map(
+    (cash) => `${cash[0]}: $${cash[1].toFixed(2)} <br>`
+  ).reverse().join(""); 
+};
+
+window.onload = displayCashInDrawer;
+
+// Event listeners for Purchase button and Enter key
+document.getElementById("purchase-btn").addEventListener("click", checkRegister);
+document.getElementById("cash").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    checkRegister();
+  }
+});
